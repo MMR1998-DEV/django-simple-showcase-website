@@ -1,0 +1,66 @@
+{% extends 'frontend/portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">Demo website with Backend</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">this is my first demo django website which is database
+                    integrated, here i have used the bootstrap template for frontend</h2>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center text-lg-start">
+                        <a href="#"
+                            class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                            <span>Get Started</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <img src="{% static 'portfolio/hero-img.png' %}" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <p>Portfolio Section</p>
+        </header>
+
+        <div class="row">
+            {% for show in projects %}
+
+            <div class="col-lg-4">
+                <div class="post-box">
+                    <div class="post-img"><img src="{{ show.image.url }}" class="img-fluid" alt=""></div>
+                    <h3 class="post-title">{{ show.title }}</h3>
+                    <p class="desc">{{ show.desc }}</p>
+
+                    {% if show.url %}
+                    <a href="{{ show.url }}" class="readmore stretched-link mt-auto"><span>Read More</span><i
+                            class="bi bi-arrow-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section><!-- End Recent Blog Posts Section -->
+
+
+{% endblock %}
